@@ -25,7 +25,7 @@ void PhoneBook::searchContact() const
 	std::cout << std::setw(10) << "First name" << "|";
 	std::cout << std::setw(10) << "Last name" << "|";
 	std::cout << std::setw(10) << "Nickname" << std::endl;
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < _count; i++)
 		_contacts[i].displayShort(i + 1);
 	std::cout << "Enter index: ";
 	std::string input;

@@ -7,15 +7,20 @@ Contact::Contact()
 void Contact::setInfo()
 {
 	std::cout << "First name: ";
-	std::getline(std::cin, _first_name);
+	while (std::getline(std::cin, _first_name), _first_name.empty())
+		std::cout << "Field cannot be empty. Try again: ";
 	std::cout << "Last name: ";
-	std::getline(std::cin, _last_name);
+	while (std::getline(std::cin, _last_name), _last_name.empty())
+		std::cout << "Field cannot be empty. Try again: ";
 	std::cout << "Nickname: ";
-	std::getline(std::cin, _nickname);
+	while (std::getline(std::cin, _nickname), _nickname.empty())
+		std::cout << "Field cannot be empty. Try again: ";
 	std::cout << "Phone number: ";
-	std::getline(std::cin, _phone_number);
+	while (std::getline(std::cin, _phone_number), _phone_number.empty())
+		std::cout << "Field cannot be empty. Try again: ";
 	std::cout << "Darkest secret: ";
-	std::getline(std::cin, _darkest_secret);
+	while (std::getline(std::cin, _darkest_secret), _darkest_secret.empty())
+		std::cout << "Field cannot be empty. Try again: ";
 }
 
 void Contact::displayShort(int index) const
