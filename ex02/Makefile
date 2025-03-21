@@ -13,8 +13,7 @@ FLAGS		= 	-Wall -Werror -Wextra -std=c++98 -g3
 
 SRC_DIR		= 	./
 
-SRC_FILES	= 	main		\
-				Account		\
+SRC_FILES	=	Account		\
 				tests		\
 
 SRC			= 	$(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC_FILES)))
