@@ -1,15 +1,15 @@
 #include "Contact.hpp"
-#include <iostream>
 
 class PhoneBook
 {
   private:
-	Contact contacts[8]; // Tableau statique de 8 contacts
-	int count;           // Nombre de contacts enregistrés
-	int oldest;          // Index du plus ancien contact
+	Contact _contacts[8];
+	int _count;
+	int _oldest;
 
   public:
-	PhoneBook(); // Constructeur
+	PhoneBook();
 
-	void addContact(); // Ajoute un contact
+	void addContact();
+	void searchContact() const;
 };

@@ -1,11 +1,9 @@
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
-#include <iostream>
 
 int	main(void)
 {
 	PhoneBook	ph;
-	Contact		co;
 
 	std::string command;
 	while (1)
@@ -15,7 +13,7 @@ int	main(void)
 		if (command == "ADD")
 			ph.addContact();
 		else if (command == "SEARCH")
-			co.displayShort(2);
+			ph.searchContact();
 		else if (command == "EXIT")
 		{
 			std::cout << "Goodbye" << std::endl;
