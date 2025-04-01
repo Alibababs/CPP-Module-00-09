@@ -45,8 +45,8 @@ void replaceAndWrite(const std::string &filename, const std::string &s1, const s
         return;
     }
 
-    std::string outputFile = filename + ".replace";
-    std::ofstream outfile(outputFile.c_str());
+    std::string newName = filename + ".replace";
+    std::ofstream outfile(newName.c_str());
     if (!outfile)
     {
         std::cerr << "Error: Cannot create output file." << std::endl;
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 {
     if (argc != 4)
     {
-        std::cerr << "Error : Need filename, s1 and s2" << std::endl;
+        std::cerr << "Error: Need filename, s1 and s2" << std::endl;
         return (1);
     }
     
