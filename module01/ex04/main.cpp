@@ -1,32 +1,67 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 
-int main(int argc, char **argv)
+std::string stringReplace(const std::string &str, const std::string &s1, const std::string &s2)
 {
-    if (argc != 4)
+    if (s1.empty())
+        return str;
+    
+    std::string result;
+    size_t pos = 0, found;
+    while ((found = str.find(s1, pos)) != std::string::npos)
     {
-        std::cerr << "Error: Invalid number of arguments" << std::endl;
-        return (1);
+        result.append(str, pos, found - pos);
+        result.append(s2);
+        pos = found + s1.length();
+    }
+    result.append(str, pos, str.length() - pos);
+    return result;
+}
+
+void replaceAndWrite(const std::string &filename, const std::string &s1, const std::string &s2)
+{
+    if (s1.empty())
+    {
+        std::cerr << "Error: s1 cannot be empty." << std::endl;
+        return;
     }
 
-    std::ifstream infile(argv[1]);
-    std::string s1 = argv[2];
-    std::string s2 = argv[3];
-
-    std::ofstream replace("MIAOU.txt");
-    if (!replace)
+    std::ifstream infile(filename.c_str());
+    if (!infile)
     {
-        std::cerr << "Error: Create failed" << std::endl;
-        return (1);
+        std::cerr << "Error: Cannot open input file." << std::endl;
+        return;
     }
+
+    std::string outputFile = filename + ".replace";
+    std::ofstream outfile(outputFile.c_str());
+    if (!outfile)
+    {
+        std::cerr << "Error: Cannot create output file." << std::endl;
+        return;
+    }
+
     std::string line;
     while (std::getline(infile, line))
     {
-        line.replace(line.find(s1), s1.length(), s2);
-        replace << line << std::endl;
+        outfile << stringReplace(line, s1, s2) << std::endl;
     }
-    infile.close();
-    replace.close();
+}
 
-    return (0);
+int main(int argc, char *argv[])
+{
+    if (argc != 4)
+    {
+        std::cerr << "Usage: " << argv[0] << " <filename> <s1> <s2>" << std::endl;
+        return 1;
+    }
+
+    std::string filename = argv[1];
+    std::string s1 = argv[2];
+    std::string s2 = argv[3];
+    
+    replaceAndWrite(filename, s1, s2);
+    
+    return 0;
 }
