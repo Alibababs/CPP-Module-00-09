@@ -44,5 +44,3 @@ float Fixed::toFloat(void) const
 {
 	return (_value >> _fractionalBits)
 }
-
-std::ostream 
