@@ -5,6 +5,18 @@ Fixed::Fixed() : _value(0)
 	std::cout << "Default constructor called" << std::endl;
 }
 
+Fixed::Fixed (int intValue)
+{
+    std::cout << "Int constructor called" << std::endl;
+    intValue = 0;
+}
+
+Fixed::Fixed(float floatValue)
+{
+    std::cout << "Float constructor called" << std::endl;
+    floatValue = 0;
+}
+
 Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;

@@ -21,5 +21,9 @@ class Fixed
     float toFloat( void ) const;
 	int toInt( void ) const;
 
-    std::ostream 
+    // std::ostream &operator<<(std::ostream &os, const Fixed &cop)
+    // {
+    //     os << fixed.toFloat();
+    //     return os;
+    // }
 };
