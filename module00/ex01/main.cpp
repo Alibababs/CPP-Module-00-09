@@ -19,6 +19,8 @@ int	main(void)
 			std::cout << "Goodbye" << std::endl;
 			break ;
 		}
+		else if (std::cin.eof())
+			exit(0);
 	}
 	return (0);
 }

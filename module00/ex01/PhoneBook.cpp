@@ -8,13 +8,13 @@ void PhoneBook::addContact()
 {
 	if (_count < 8)
 	{
-	_contacts[_count].setInfo();
-	_count++;
+		_contacts[_count].setInfo();
+		_count++;
 	}
 	else
 	{
-	_contacts[_oldest].setInfo();
-	_oldest = (_oldest + 1) % 8;
+		_contacts[_oldest].setInfo();
+		_oldest = (_oldest + 1) % 8;
 	}
 	std::cout << "Contact added successfully!" << std::endl;
 }
