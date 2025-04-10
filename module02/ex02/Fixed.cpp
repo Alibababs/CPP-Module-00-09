@@ -36,6 +36,22 @@ Fixed &Fixed::operator=(const Fixed &copy)
 	return (*this);
 }
 
+Fixed Fixed::operator+(const Fixed &copy) const
+{
+	std::cout << "Addition operator called" << std::endl;
+	Fixed result;
+	result.setRawBits(_value + copy.getRawBits());
+	return (result);
+}
+
+Fixed Fixed::operator-(const Fixed &copy) const
+{
+	std::cout << "Soustraction operator called" << std::endl;
+	Fixed result;
+	result.setRawBits(_value - copy.getRawBits());
+	return (result);
+}
+
 int Fixed::getRawBits(void) const
 {
 	return (_value);
