@@ -23,13 +23,14 @@ class Fixed
 	Fixed operator++(int);
 	Fixed &operator--();
 	Fixed operator--(int);
-
-	int getRawBits(void) const;
-	void setRawBits(int const raw);
-    float toFloat( void ) const;
-	int toInt( void ) const;
-
 	
+	static const Fixed &min(const Fixed &copy1, const Fixed &copy2);
+	static const Fixed &max(const Fixed &copy1, const Fixed &copy2);
+
+	void setRawBits(int const raw);
+	int getRawBits(void) const;
+	int toInt( void ) const;
+    float toFloat( void ) const;
 };
 
 std::ostream &operator<<(std::ostream &os, const Fixed &copy);

@@ -1,6 +1,6 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed() : _value(0)
+Fixed::Fixed() : _value(0) 
 {
 }
 
@@ -32,29 +32,25 @@ Fixed &Fixed::operator=(const Fixed &copy)
 
 Fixed Fixed::operator+(const Fixed &copy) const
 {
-	Fixed result;
-	result.setRawBits(_value + copy.getRawBits());
+	Fixed result(this->toFloat() + copy.toFloat());
 	return (result);
 }
 
 Fixed Fixed::operator-(const Fixed &copy) const
 {
-	Fixed result;
-	result.setRawBits(_value - copy.getRawBits());
+	Fixed result(this->toFloat() - copy.toFloat());
 	return (result);
 }
 
 Fixed Fixed::operator*(const Fixed &copy) const
 {
-	Fixed result;
-	result.setRawBits(_value * copy.getRawBits());
+	Fixed result(this->toFloat() * copy.toFloat());
 	return (result);
 }
 
 Fixed Fixed::operator/(const Fixed &copy) const
 {
-	Fixed result;
-	result.setRawBits(_value / copy.getRawBits());
+	Fixed result(this->toFloat() / copy.toFloat());
 	return (result);
 }
 
@@ -82,6 +78,16 @@ Fixed Fixed::operator--(int)
 	Fixed temp(*this);
 	--(*this);
 	return (temp);
+}
+
+const Fixed &Fixed::min(const Fixed &copy1, const Fixed &copy2)
+{
+	return (copy1.getRawBits() < copy2.getRawBits() ? copy1 : copy2);
+}
+
+const Fixed &Fixed::max(const Fixed &copy1, const Fixed &copy2)
+{
+	return (copy1.getRawBits() > copy2.getRawBits() ? copy1 : copy2);
 }
 
 int Fixed::getRawBits(void) const
