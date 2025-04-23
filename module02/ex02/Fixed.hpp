@@ -11,9 +11,9 @@ class Fixed
 	Fixed();
 	Fixed(int intValue);
 	Fixed(float floatValue);
-
-	~Fixed();
 	Fixed(const Fixed &copy);
+	~Fixed();
+
 	Fixed &operator=(const Fixed &copy);
 	Fixed operator+(const Fixed &copy) const;
 	Fixed operator-(const Fixed &copy) const;
@@ -23,7 +23,14 @@ class Fixed
 	Fixed operator++(int);
 	Fixed &operator--();
 	Fixed operator--(int);
-	
+
+	bool operator>(const Fixed &copy) const;
+	bool operator<(const Fixed &copy) const;
+	bool operator>=(const Fixed &copy) const;
+	bool operator<=(const Fixed &copy) const;
+	bool operator==(const Fixed &copy) const;
+	bool operator!=(const Fixed &copy) const;
+
 	static const Fixed &min(const Fixed &copy1, const Fixed &copy2);
 	static const Fixed &max(const Fixed &copy1, const Fixed &copy2);
 

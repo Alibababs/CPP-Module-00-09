@@ -30,6 +30,36 @@ Fixed &Fixed::operator=(const Fixed &copy)
 	return (*this);
 }
 
+bool Fixed::operator>(const Fixed &copy) const
+{
+	return (this->toFloat() > copy.toFloat());
+}
+
+bool Fixed::operator<(const Fixed &copy) const
+{
+	return (this->toFloat() < copy.toFloat());
+}
+
+bool Fixed::operator>=(const Fixed &copy) const
+{
+	return (this->toFloat() >= copy.toFloat());
+}
+
+bool Fixed::operator<=(const Fixed &copy) const
+{
+	return (this->toFloat() <= copy.toFloat());
+}
+
+bool Fixed::operator==(const Fixed &copy) const
+{
+	return (this->toFloat() == copy.toFloat());
+}
+
+bool Fixed::operator!=(const Fixed &copy) const
+{
+	return (this->toFloat() != copy.toFloat());
+}
+
 Fixed Fixed::operator+(const Fixed &copy) const
 {
 	Fixed result(this->toFloat() + copy.toFloat());
