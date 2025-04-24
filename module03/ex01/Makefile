@@ -14,7 +14,8 @@ FLAGS		= 	-Wall -Werror -Wextra -std=c++98 -g3
 SRC_DIR		= 	./
 
 SRC_FILES	=	main			\
-				ClapTrap
+				ClapTrap		\
+				ScavTrap
 
 SRC			= 	$(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC_FILES)))
 
