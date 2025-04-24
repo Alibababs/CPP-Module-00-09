@@ -7,10 +7,6 @@ ScavTrap::ScavTrap() : ClapTrap()
 	_energy = 50;
 	_attack_dmg = 20;
 	std::cout << "ScavTrap default constructor called" << std::endl;
-	std::cout << "ScavTrap Name : " << _name << std::endl;
-	std::cout << "ScavTrap Hit points : " << _hit << std::endl;
-	std::cout << "ScavTrap Energy : " << _energy << std::endl;
-	std::cout << "ScavTrap Attack Damage : " << _attack_dmg << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name)

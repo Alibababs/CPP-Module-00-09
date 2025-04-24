@@ -13,5 +13,13 @@ int main()
 
 	scavou.guardGate();
 
+	ClapTrap clapou("Clapou");
+
+	clapou.attack("enemy");
+	
+	clapou.takeDamage(1);
+
+	clapou.beRepaired(1);
+
 	return 0;
 }
