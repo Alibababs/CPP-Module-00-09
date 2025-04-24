@@ -9,34 +9,27 @@ DiamondTrap::DiamondTrap() : ClapTrap()
 	std::cout << "DiamondTrap default constructor called" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_trap")
 {
 	_name = name;
-	_hit = 100;
-	_energy = 50;
-	_attack_dmg = 20;
+	_hit = FragTrap::_hit;
+	_energy = ScavTrap::_energy;
+	_attack_dmg = FragTrap::_attack_dmg;
 	std::cout << "DiamondTrap NAME constructor called" << std::endl;
-	std::cout << "DiamondTrap Name : " << _name << std::endl;
-	std::cout << "DiamondTrap Hit points : " << _hit << std::endl;
-	std::cout << "DiamondTrap Energy : " << _energy << std::endl;
-	std::cout << "DiamondTrap Attack Damage : " << _attack_dmg << std::endl;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &copy) : ClapTrap(copy)
+DiamondTrap::DiamondTrap(const DiamondTrap &copy) : ClapTrap(copy), ScavTrap(copy), FragTrap(copy)
 {
-	_hit = copy._hit;
-	_energy = copy._energy;
-	_attack_dmg = copy._attack_dmg;
+	*this = copy;
 }
 
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &copy)
 {
-	if (this != &copy)
-	{
-		_hit = copy._hit;
-		_energy = copy._energy;
-		_attack_dmg = copy._attack_dmg;
-	}
+	std::cout << "DiamondTrap Assignation operator called" << std::endl;
+	_name = copy._name + "_clap_trap";
+	_hit = copy._hit;
+	_energy = copy._energy;
+	_attack_dmg = copy._attack_dmg;
 	return (*this);
 }
 
@@ -47,24 +40,11 @@ DiamondTrap::~DiamondTrap()
 
 void DiamondTrap::attack(const std::string& target)
 {
-	if (_energy <= 0 || _hit <= 0)
-	{
-		std::cout << "DiamondTrap " << _name 
-				  << " can't do anything if it has no hit points or energy points left" 
-				  << std::endl;
-		return ;
-	}
-	if (_energy > 0)
-		_energy--;
-	std::cout << "DiamondTrap " << _name 
-			  << " super attacks " << target 
-			  << ", causing " << _attack_dmg << " points of damage!"
-			  << std::endl
-			  << _name << " now has " << _energy << " energy points."
-			  << std::endl;
+	ScavTrap::attack(target);
 }
 
-void DiamondTrap::guardGate()
+void DiamondTrap::whoAmI()
 {
-	std::cout << "DiamondTrap is now in Gate keeper mode." << std::endl;
+	std::cout << "DiamondTrap name : " << _name << std::endl;
+	std::cout << "ClapTrap name : " << ClapTrap::_name << std::endl;
 }

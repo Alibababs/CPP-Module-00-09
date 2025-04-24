@@ -8,10 +8,6 @@ ClapTrap::ClapTrap() : _name("noname"), _hit(10), _energy(10), _attack_dmg(0)
 ClapTrap::ClapTrap(std::string name) : _name(name), _hit(10), _energy(10), _attack_dmg(0)
 {
 	std::cout << "ClapTrap NAME constructor called" << std::endl;
-	std::cout << "ClapTrap Name : " << _name << std::endl;
-	std::cout << "ClapTrap Hit points : " << _hit << std::endl;
-	std::cout << "ClapTrap Energy : " << _energy << std::endl;
-	std::cout << "ClapTrap Attack Damage : " << _attack_dmg << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &copy)

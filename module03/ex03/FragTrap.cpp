@@ -16,17 +16,10 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	_energy = 50;
 	_attack_dmg = 20;
 	std::cout << "FragTrap NAME constructor called" << std::endl;
-	std::cout << "FragTrap Name : " << _name << std::endl;
-	std::cout << "FragTrap Hit points : " << _hit << std::endl;
-	std::cout << "FragTrap Energy : " << _energy << std::endl;
-	std::cout << "FragTrap Attack Damage : " << _attack_dmg << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy)
 {
-	_hit = copy._hit;
-	_energy = copy._energy;
-	_attack_dmg = copy._attack_dmg;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &copy)

@@ -24,9 +24,6 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 
 ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy)
 {
-	_hit = copy._hit;
-	_energy = copy._energy;
-	_attack_dmg = copy._attack_dmg;
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &copy)

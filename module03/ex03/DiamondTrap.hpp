@@ -1,10 +1,11 @@
-#ifndef SCAV_TRAP_HPP
-#define SCAV_TRAP_HPP
+#ifndef DIAMOND_TRAP_HPP
+#define DIAMOND_TRAP_HPP
 
 #include <iostream>
-#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 
-class DiamondTrap : public ClapTrap
+class DiamondTrap : public ScavTrap, public FragTrap
 {
 	private:
 
@@ -16,7 +17,7 @@ class DiamondTrap : public ClapTrap
 		~DiamondTrap();
 
 		void attack(const std::string& target);
-		void guardGate();
+		void whoAmI();
 };
 
 #endif

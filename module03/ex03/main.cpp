@@ -1,36 +1,23 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main()
 {
-	ScavTrap scavou("Scavou");
+	DiamondTrap diams("Diams");
 
-	scavou.attack("enemy");
-	
-	scavou.takeDamage(1);
+	diams.attack("Michel");
 
-	scavou.beRepaired(1);
+	diams.beRepaired(1);
 
-	scavou.guardGate();
+	diams.takeDamage(1);
 
-	ClapTrap clapou("Clapou");
+	diams.highFivesGuys();
 
-	clapou.attack("enemy");
-	
-	clapou.takeDamage(1);
+	diams.guardGate();
 
-	clapou.beRepaired(1);
-
-	FragTrap fragou("Fragou");
-
-	fragou.attack("enemy");
-	
-	fragou.takeDamage(1);
-
-	fragou.beRepaired(1);
-
-	fragou.highFivesGuys();
+	diams.whoAmI();
 
 	return 0;
 }

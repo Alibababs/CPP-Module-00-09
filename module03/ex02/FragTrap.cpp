@@ -24,9 +24,6 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 
 FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy)
 {
-	_hit = copy._hit;
-	_energy = copy._energy;
-	_attack_dmg = copy._attack_dmg;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &copy)
