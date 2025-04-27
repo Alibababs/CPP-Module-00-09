@@ -9,13 +9,11 @@ class Animal
         std::string _type;
     public:
         Animal();
-        Animal(std::string type);
-        ~Animal();
         Animal(const Animal &copy);
         Animal &operator=(const Animal &copy);
+        virtual ~Animal();
 
-        void makeSound() const;
-
+        virtual void makeSound() const;
         std::string getType() const;
 };
 
