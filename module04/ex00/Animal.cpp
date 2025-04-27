@@ -1,6 +1,6 @@
-#include "animal.hpp"
+#include "Animal.hpp"
 
-Animal::Animal()
+Animal::Animal() : _type("Animal")
 {
     std::cout << "Animal constructor called" << std::endl;
 }
@@ -26,7 +26,7 @@ Animal::~Animal()
 
 void Animal::makeSound() const
 {
-    std::cout << "Roaaarrr" << std::endl;
+    std::cout << "ANIMALSOUND" << std::endl;
 }
 
 std::string Animal::getType() const

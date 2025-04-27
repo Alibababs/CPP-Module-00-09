@@ -1,4 +1,4 @@
-#include "dog.hpp"
+#include "Dog.hpp"
 
 Dog::Dog() : Animal()
 {
@@ -26,5 +26,5 @@ Dog::~Dog()
 
 void Dog::makeSound() const
 {
-    std::cout << "Woaf" << std::endl;
+    std::cout << "WOAF" << std::endl;
 }
