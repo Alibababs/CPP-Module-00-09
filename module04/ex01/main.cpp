@@ -24,8 +24,8 @@ int main()
 
     std::cout << "========= CHECK TYPE =========" << std::endl;
     
-    std::cout << list[4]->getType() << std::endl;
-    std::cout << list[5]->getType() << std::endl;
+    std::cout << list[2]->getType() << std::endl;
+    std::cout << list[3]->getType() << std::endl;
 
     std::cout << "========= CHECK DEEP COPY =========" << std::endl;
 
