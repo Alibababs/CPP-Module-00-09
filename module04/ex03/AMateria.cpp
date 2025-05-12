@@ -7,7 +7,7 @@ AMateria::AMateria() : _type("notype")
 
 AMateria::AMateria(const AMateria &copy)
 {
-    std::cout << "Aninal copy constructor called" << std::endl;
+    std::cout << "AMateria copy constructor called" << std::endl;
     *this = copy;
 }
 
@@ -38,3 +38,5 @@ void AMateria::use(ICharacter& target)
 {
 	std::cout << "USE" << std::endl;
 }
+
+// virtual AMateria* clone() const = 0;
