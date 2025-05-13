@@ -9,9 +9,9 @@ void Contact::getCin(const std::string &prompt, std::string &field)
 	std::cout << prompt;
 	while (std::getline(std::cin, field))
 	{
-		if (!field.empty())
+		if (!field.empty() && field.find('\033') == std::string::npos)
 			return;
-		std::cout << "Field cannot be empty. Try again: ";
+		std::cout << "Invalid input. Try again: ";
 	}
 	if (std::cin.eof())
 		exit(1);
