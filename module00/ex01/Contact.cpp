@@ -4,23 +4,26 @@ Contact::Contact()
 {
 }
 
+void Contact::getCin(const std::string &prompt, std::string &field)
+{
+	std::cout << prompt;
+	while (std::getline(std::cin, field))
+	{
+		if (!field.empty())
+			return;
+		std::cout << "Field cannot be empty. Try again: ";
+	}
+	if (std::cin.eof())
+		exit(1);
+}
+
 void Contact::setInfo()
 {
-	std::cout << "First name: ";
-	while (std::getline(std::cin, _first_name), _first_name.empty())
-		std::cout << "Field cannot be empty. Try again: ";
-	std::cout << "Last name: ";
-	while (std::getline(std::cin, _last_name), _last_name.empty())
-		std::cout << "Field cannot be empty. Try again: ";
-	std::cout << "Nickname: ";
-	while (std::getline(std::cin, _nickname), _nickname.empty())
-		std::cout << "Field cannot be empty. Try again: ";
-	std::cout << "Phone number: ";
-	while (std::getline(std::cin, _phone_number), _phone_number.empty())
-		std::cout << "Field cannot be empty. Try again: ";
-	std::cout << "Darkest secret: ";
-	while (std::getline(std::cin, _darkest_secret), _darkest_secret.empty())
-		std::cout << "Field cannot be empty. Try again: ";
+	getCin("First name: ", _first_name);
+	getCin("Last name: ", _last_name);
+	getCin("Nickname: ", _nickname);
+	getCin("Phone number: ", _phone_number);
+	getCin("Darkest secret: ", _darkest_secret);
 }
 
 void Contact::displayShort(int index) const

@@ -20,7 +20,7 @@ int	main(void)
 			break ;
 		}
 		else if (std::cin.eof())
-			exit (0);
+			exit (1);
 	}
 	return (0);
 }

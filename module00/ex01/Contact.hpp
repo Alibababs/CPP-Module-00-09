@@ -13,7 +13,7 @@ class Contact
 	std::string _nickname;
 	std::string _phone_number;
 	std::string _darkest_secret;
-
+	void getCin(const std::string& prompt, std::string& field);
   public:
 	Contact();
 
