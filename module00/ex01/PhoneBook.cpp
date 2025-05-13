@@ -29,7 +29,7 @@ void PhoneBook::searchContact() const
 		_contacts[i].displayShort(i + 1);
 	std::cout << "Enter index: ";
 	if (std::cin.eof())
-		exit (0);
+		exit (1);
 	std::string input;
 	std::getline(std::cin, input);
 	int index = std::atoi(input.c_str());
