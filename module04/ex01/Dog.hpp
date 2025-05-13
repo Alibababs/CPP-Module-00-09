@@ -1,3 +1,6 @@
+#ifndef DOG_HPP
+#define DOG_HPP
+
 #include "Animal.hpp"
 #include "Brain.hpp"
 
@@ -16,3 +19,5 @@ class Dog : public Animal
         void setIdea(int const &index, std::string const &idea);
         std::string const &getIdea(int const &index) const;
 };
+
+#endif

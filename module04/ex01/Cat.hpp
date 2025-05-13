@@ -1,3 +1,6 @@
+#ifndef CAT_HPP
+#define CAT_HPP
+
 #include "Animal.hpp"
 #include "Brain.hpp"
 
@@ -16,3 +19,5 @@ class Cat : public Animal
         void setIdea(int const &index, std::string const &idea);
         std::string const &getIdea(int const &index) const;
 };
+
+#endif
