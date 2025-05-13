@@ -1,8 +1,8 @@
 #include "MateriaSource.hpp"
 
-MateriaSource::MateriaSource(): _type("notype")
+MateriaSource::MateriaSource()
 {
-    std::cout << "MateriaSource constructor called" << std::endl;
+    // std::cout << "MateriaSource constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
 		_inventory[i] = NULL;
@@ -23,7 +23,7 @@ MateriaSource::MateriaSource(const MateriaSource &copy)
     
 MateriaSource &MateriaSource::operator=(const MateriaSource &copy)
 {
-    std::cout << "MateriaSource assignment operator called" << std::endl;
+    // std::cout << "MateriaSource assignment operator called" << std::endl;
     if (this != &copy)
 	{
 		for (int i = 0; i < 4; i++)
@@ -42,7 +42,7 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &copy)
 
 MateriaSource::~MateriaSource()
 {
-    std::cout << "MateriaSource destructor called" << std::endl;
+    // std::cout << "MateriaSource destructor called" << std::endl;
     for (int i = 0; i < 4; i++)
 	{
 		if (_inventory[i])
@@ -50,17 +50,31 @@ MateriaSource::~MateriaSource()
 	}
 }
 
-MateriaSource::MateriaSource(std::string const & type) : _type(type)
+void MateriaSource::learnMateria(AMateria* m)
 {
-	std::cout << "AMateria type constructor called" << std::endl;
-}
-
-void MateriaSource::learnMateria(AMateria*)
-{
-    std::cout << "learn" << std::endl;
+	// std::cout << "learn" << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		if (_inventory[i] == NULL)
+		{
+			_inventory[i] = m;
+			std::cout << "Materia learned" << std::endl;
+			return;
+		}
+	}
+	std::cout << "Inventory full, cannot learn more materia" << std::endl;
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)
 {
-    std::cout << "create" << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		if (_inventory[i] && _inventory[i]->getType() == type)
+		{
+			std::cout << "Materia created" << std::endl;
+			return _inventory[i]->clone();
+		}
+	}
+	std::cout << "Materia not found" << std::endl;
+	return 0;
 }

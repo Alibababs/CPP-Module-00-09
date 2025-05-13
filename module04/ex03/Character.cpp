@@ -2,7 +2,7 @@
 
 Character::Character() : _name("noname")
 {
-    std::cout << "Character constructor called" << std::endl;
+    // std::cout << "Character constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
     {
         _inventory[i] = NULL;
@@ -44,7 +44,7 @@ Character &Character::operator=(const Character &copy)
 
 Character::~Character()
 {
-    std::cout << "Character destructor called" << std::endl;
+    // std::cout << "Character destructor called" << std::endl;
     for (int i = 0; i < 4; i++)
 	{
 		if (_inventory[i])
@@ -54,7 +54,7 @@ Character::~Character()
 
 Character::Character(std::string const & name) : _name(name)
 {
-	std::cout << "Character name constructor called" << std::endl;
+	// std::cout << "Character name constructor called" << std::endl;
 }
 
 const std::string &Character::getName() const
@@ -64,15 +64,46 @@ const std::string &Character::getName() const
 
 void Character::equip(AMateria* m)
 {
-    std::cout << "EQUIP" << std::endl;
+	if (m == NULL)
+	{
+		std::cout << "EQUIP" << std::endl;
+		return;
+	}
+	for (int i = 0; i < 4; i++)
+	{
+		if (_inventory[i] == NULL)
+		{
+			_inventory[i] = m;
+			std::cout << "EQUIP" << std::endl;
+			return;
+		}
+	}
+	std::cout << "EQUIP" << std::endl;
 }
 
 void Character::unequip(int idx)
 {
-    std::cout << "UNEQUIP" << std::endl;
+	if (idx >= 0 && idx < 4)
+	{
+		// std::cout << "UNEQUIP" << std::endl;
+		_inventory[idx] = NULL;
+		return;
+	}
+	else
+		std::cout << "Index out of range" << std::endl;
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-	std::cout << "USE" << std::endl;
+	if (idx >= 0 && idx < 4)
+	{
+		if (!_inventory[idx])
+		{
+			std::cout << "No materia in this index" << std::endl;
+			return ;
+		}
+		_inventory[idx]->use(target);
+	}
+	else
+		std::cout << "Index out of range" << std::endl;
 }

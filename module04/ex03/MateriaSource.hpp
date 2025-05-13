@@ -1,5 +1,5 @@
-#ifndef ICHARACTER_HPP
-#define ICHARACTER_HPP
+#ifndef MATERIASOURCE_HPP
+#define MATERIASOURCE_HPP
 
 #include "AMateria.hpp"
 #include "IMateriaSource.hpp"
@@ -7,7 +7,6 @@
 class MateriaSource : public IMateriaSource
 {
   private:
-      std::string _type;
       AMateria *_inventory[4];
   public:
       MateriaSource();
@@ -15,9 +14,8 @@ class MateriaSource : public IMateriaSource
       MateriaSource &operator=(const MateriaSource &copy);
       ~MateriaSource();
 
-      MateriaSource(std::string const & type);
-      void learnMateria(AMateria*);
-      AMateria* createMateria(std::string const & type);
+      virtual void learnMateria(AMateria*);
+      virtual AMateria* createMateria(std::string const & type);
 };
 
 #endif
