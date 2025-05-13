@@ -4,7 +4,7 @@
 #include <iostream>
 #include "ICharacter.hpp"
 
-class Ice
+class Ice : public AMateria
 {
 	protected:
 		std::string _type;
@@ -13,11 +13,9 @@ class Ice
 		Ice(const Ice &copy);
 		Ice &operator=(const Ice &copy);
 		virtual ~Ice();
-
-        Ice(std::string const & type);
 	        
-		virtual Ice* clone() const = 0;
-		virtual void use(ICharacter& target);
+		virtual AMateria* clone() const = 0;
+		void use(ICharacter& target);
 };
 
 #endif

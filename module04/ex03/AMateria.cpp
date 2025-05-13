@@ -39,4 +39,7 @@ void AMateria::use(ICharacter& target)
 	std::cout << "USE" << std::endl;
 }
 
-// virtual AMateria* clone() const = 0;
+AMateria* AMateria::clone() const
+{
+    std::cout << "clone" << std::endl;
+}

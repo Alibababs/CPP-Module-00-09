@@ -1,14 +1,13 @@
 #include "Ice.hpp"
 
-Ice::Ice() : _type("ice")
+Ice::Ice() : AMateria("ice")
 {
     std::cout << "Ice constructor called" << std::endl;
 }
 
-Ice::Ice(const Ice &copy)
+Ice::Ice(const Ice &copy) : AMateria(copy._type)
 {
     std::cout << "Ice copy constructor called" << std::endl;
-    *this = copy;
 }
 
 Ice &Ice::operator=(const Ice &copy)
@@ -24,19 +23,13 @@ Ice::~Ice()
     std::cout << "Ice destructor called" << std::endl;
 }
 
-Ice::Ice(std::string const & type) : _type(type)
-{
-	std::cout << "Ice type constructor called" << std::endl;
-}
-
-// const std::string &Ice::getType() const
-// {
-// 	return _type;
-// }
-
 void Ice::use(ICharacter& target)
 {
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+    std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
 
-// virtual Ice* clone() const = 0;
+AMateria* Ice::clone() const
+{
+    AMateria *newIce = new Ice();
+    return newIce;
+}

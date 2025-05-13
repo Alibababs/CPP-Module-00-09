@@ -6,15 +6,7 @@
 
 class ICharacter
 {
-    private:
-        std::string _name;
-        AMateria *_inventory[4];
-	public:
-    	ICharacter();
-        ICharacter(std::string const & name);
-		ICharacter(const ICharacter &copy);
-		ICharacter &operator=(const ICharacter &copy);
-
+    public:
         virtual ~ICharacter() {}
         virtual std::string const & getName() const = 0;
         virtual void equip(AMateria* m) = 0;
