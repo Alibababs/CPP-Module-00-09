@@ -29,6 +29,12 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &copy)
    return *this;
 }
 
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& b)
+{
+    os << b.getName() << "'s grade is " << b.getGrade();
+	return os;
+}
+
 Bureaucrat::~Bureaucrat()
 {
     std::cout << "Bureaucrat destructor called" << std::endl;

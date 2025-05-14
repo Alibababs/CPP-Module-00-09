@@ -53,6 +53,7 @@ int main( void )
         Bureaucrat michel("Michel", 42);
         michel.incrementGrade();
         michel.decrementGrade();
+        std::cout << michel << std::endl;
     }
     catch (std::exception & e)
     {
