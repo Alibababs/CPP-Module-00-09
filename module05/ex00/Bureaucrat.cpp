@@ -25,7 +25,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &copy)
 {
    std::cout << "Bureaucrat copy assignment operator called" << std::endl;
    if (this != &copy)
-        this->_name = copy._name;
+        this->_grade = copy._grade;
    return *this;
 }
 
