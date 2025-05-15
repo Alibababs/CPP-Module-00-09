@@ -1,62 +1,27 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main( void )
 {
-    /// TOO HIGH
-    std::cout << "----- TOO HIGH TEST -----" << std::endl;
-    try
-    {
-        Bureaucrat michel("Michel", 151);
-    }
-    catch (std::exception & e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-    /// TOO LOW
-    std::cout << "----- TOO LOW TEST -----" << std::endl;
-    try
-    {
-        Bureaucrat michel("Michel", -42);
-    }
-    catch (std::exception & e)
-    {
-        std::cout << e.what() << std::endl;
-    }
+    /// CAN'T SIGN
+    std::cout << "----- CAN'T SIGN -----" << std::endl;
 
-    /// INCREMENT TEST
-    std::cout << "----- INCREMENT TEST -----" << std::endl;
-    try
-    {
-        Bureaucrat michel("Michel", 1);
-        michel.incrementGrade();
-    }
-    catch (std::exception & e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-    /// DECREMENT TEST
-    std::cout << "----- DECREMENT TEST -----" << std::endl;
-    try
-    {
-        Bureaucrat michel("Michel", 150);
-        michel.decrementGrade();
-    }
-    catch (std::exception & e)
-    {
-        std::cout << e.what() << std::endl;
-    }
+    Form form("F42", 42, 42);
 
-    /// WORKING
-    std::cout << "----- WORKING TEST -----" << std::endl;
-    try
-    {
-        Bureaucrat michel("Michel", 42);
-        michel.incrementGrade();
-        michel.decrementGrade();
-        std::cout << michel << std::endl;
-    }
-    catch (std::exception & e)
-    {
-        std::cout << e.what() << std::endl;
-    }
+    std::cout << form << std::endl;
+
+    Bureaucrat michel("Michel", 43);
+
+    michel.signForm(form);
+
+    std::cout << form << std::endl;
+
+    /// CAN SIGN
+    std::cout << "----- CAN SIGN -----" << std::endl;
+
+    michel.incrementGrade();
+
+    michel.signForm(form);
+
+    std::cout << form << std::endl;
 }

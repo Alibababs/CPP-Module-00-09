@@ -15,6 +15,7 @@ SRC_DIR		= 	./
 
 SRC_FILES	=	main			\
 				Bureaucrat		\
+				Form			\
 
 SRC			= 	$(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC_FILES)))
 
