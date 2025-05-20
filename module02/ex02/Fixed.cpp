@@ -110,6 +110,16 @@ Fixed Fixed::operator--(int)
 	return (temp);
 }
 
+const Fixed &Fixed::min(Fixed &copy1, Fixed &copy2)
+{
+	return (copy1.getRawBits() < copy2.getRawBits() ? copy1 : copy2);
+}
+
+const Fixed &Fixed::max(Fixed &copy1, Fixed &copy2)
+{
+	return (copy1.getRawBits() > copy2.getRawBits() ? copy1 : copy2);
+}
+
 const Fixed &Fixed::min(const Fixed &copy1, const Fixed &copy2)
 {
 	return (copy1.getRawBits() < copy2.getRawBits() ? copy1 : copy2);

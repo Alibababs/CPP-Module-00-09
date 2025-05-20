@@ -19,6 +19,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hit(10), _energy(10), _atta
 
 ClapTrap::ClapTrap(const ClapTrap &copy)
 {
+	_name = copy._name;
 	_hit = copy._hit;
 	_energy = copy._energy;
 	_attack_dmg = copy._attack_dmg;
