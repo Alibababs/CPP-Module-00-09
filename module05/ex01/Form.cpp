@@ -71,7 +71,7 @@ int Form::getGradeToExecute() const
 	return _grade_to_execute;
 }
 
-void Form::beSigned(Bureaucrat b)
+void Form::beSigned(const Bureaucrat &b)
 {
 	if (b.getGrade() <= _grade_to_sign)
 		_signed = true;

@@ -2,7 +2,7 @@
 
 MateriaSource::MateriaSource()
 {
-    // std::cout << "MateriaSource constructor called" << std::endl;
+    std::cout << "MateriaSource constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
 		_inventory[i] = NULL;
@@ -23,7 +23,7 @@ MateriaSource::MateriaSource(const MateriaSource &copy)
     
 MateriaSource &MateriaSource::operator=(const MateriaSource &copy)
 {
-    // std::cout << "MateriaSource assignment operator called" << std::endl;
+    std::cout << "MateriaSource assignment operator called" << std::endl;
     if (this != &copy)
 	{
 		for (int i = 0; i < 4; i++)
@@ -42,7 +42,7 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &copy)
 
 MateriaSource::~MateriaSource()
 {
-    // std::cout << "MateriaSource destructor called" << std::endl;
+    std::cout << "MateriaSource destructor called" << std::endl;
     for (int i = 0; i < 4; i++)
 	{
 		if (_inventory[i])
@@ -52,7 +52,7 @@ MateriaSource::~MateriaSource()
 
 void MateriaSource::learnMateria(AMateria* m)
 {
-	// std::cout << "learn" << std::endl;
+	std::cout << "learn" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
 		if (_inventory[i] == NULL)

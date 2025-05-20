@@ -2,7 +2,7 @@
 
 AMateria::AMateria() : _type("notype")
 {
-    // std::cout << "AMateria constructor called" << std::endl;
+    std::cout << "AMateria constructor called" << std::endl;
 }
 
 AMateria::AMateria(const AMateria &copy)
@@ -21,12 +21,12 @@ AMateria &AMateria::operator=(const AMateria &copy)
 
 AMateria::~AMateria()
 {
-    // std::cout << "AMateria destructor called" << std::endl;
+    std::cout << "AMateria destructor called" << std::endl;
 }
 
 AMateria::AMateria(std::string const & type) : _type(type)
 {
-	// std::cout << "AMateria type constructor called" << std::endl;
+	std::cout << "AMateria type constructor called" << std::endl;
 }
 
 const std::string &AMateria::getType() const

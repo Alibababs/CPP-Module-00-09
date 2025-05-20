@@ -2,7 +2,7 @@
 
 Character::Character() : _name("noname")
 {
-    // std::cout << "Character constructor called" << std::endl;
+    std::cout << "Character constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
     {
         _inventory[i] = NULL;
@@ -44,7 +44,7 @@ Character &Character::operator=(const Character &copy)
 
 Character::~Character()
 {
-    // std::cout << "Character destructor called" << std::endl;
+    std::cout << "Character destructor called" << std::endl;
     for (int i = 0; i < 4; i++)
 	{
 		if (_inventory[i])
@@ -54,7 +54,7 @@ Character::~Character()
 
 Character::Character(std::string const & name) : _name(name)
 {
-	// std::cout << "Character name constructor called" << std::endl;
+	std::cout << "Character name constructor called" << std::endl;
 }
 
 const std::string &Character::getName() const
@@ -85,7 +85,7 @@ void Character::unequip(int idx)
 {
 	if (idx >= 0 && idx < 4)
 	{
-		// std::cout << "UNEQUIP" << std::endl;
+		std::cout << "UNEQUIP" << std::endl;
 		_inventory[idx] = NULL;
 		return;
 	}
