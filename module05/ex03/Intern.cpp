@@ -5,14 +5,15 @@ Intern::Intern()
     std::cout << "Intern constructor called" << std::endl;
 }
 
-Intern::Intern(const Intern &copy)
+Intern::Intern(const Intern &)
 {
     std::cout << "Intern copy constructor called" << std::endl;
 }
 
-Intern &Intern::operator=(const Intern &copy)
+Intern &Intern::operator=(const Intern &)
 {
    std::cout << "Intern copy assignment operator called" << std::endl;
+   return (*this);
 }
 
 Intern::~Intern()
@@ -20,7 +21,30 @@ Intern::~Intern()
     std::cout << "Intern destructor called" << std::endl;
 }
 
-AForm* makeForm(std::string name, std::string target)
+const char* Intern::FormNameNotExist::what() const throw()
 {
-    std::cout << "COUCOU" << std::endl;
+    return "Form name does not exist!";
+}
+
+AForm* Intern::makeForm(std::string name, std::string target)
+{
+    std::string names[3] = {"shrubbery creation", "presidential pardon", "robotomy request"};
+
+    int i = 0;
+    while (i < 3 && names[i] != name)
+        i++;
+    switch (i)
+    {
+        case 0:
+            std::cout << "Intern creates ShrubberyCreationForm." << std::endl;
+            return new ShrubberyCreationForm(target);
+        case 1:
+            std::cout << "Intern creates PresidentialPardonForm." << std::endl;
+            return new PresidentialPardonForm(target);
+        case 2:
+            std::cout << "Intern creates RobotomyRequestForm." << std::endl;
+            return new RobotomyRequestForm(target);
+        default:
+            throw FormNameNotExist();
+    }
 }
