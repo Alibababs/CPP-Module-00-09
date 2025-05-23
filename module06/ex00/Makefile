@@ -9,7 +9,7 @@ NAME		= 	a.out
 
 CPP			= 	c++
 
-FLAGS		= 	-Wall -Werror -Wextra -std=c++98 -g3
+FLAGS		= 	-Wall -Werror -Wextra -Wconversion -Wno-unused -std=c++98 -g3
 
 SRC_DIR		= 	./
 

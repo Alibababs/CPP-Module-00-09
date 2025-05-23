@@ -1,11 +1,10 @@
-#include <iostream>
+#include "ScalarConverter.hpp"
 
-int main()
+int main(int argc, char **argv)
 {
-    double d;
-
-    int a = 42;
-
-    d = a;
-    
+    if (argc == 2)
+        ScalarConverter::convert(argv[1]);
+    else
+        std::cout << "Need one argument" << std::endl;
+    return 0; 
 }
