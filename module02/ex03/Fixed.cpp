@@ -18,7 +18,7 @@ Fixed::~Fixed()
 {
 }
 
-Fixed::Fixed(const Fixed &copy)
+Fixed::Fixed(const Fixed &copy) : _value(copy._value)
 {
 	*this = copy;
 }

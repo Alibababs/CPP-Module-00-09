@@ -9,22 +9,17 @@ Point::~Point()
 {
 }
 
-Point::Point(float x, float y) : _x(x), _y(y)
+Point::Point(float const &x, float const &y) : _x(x), _y(y)
 {
 }
 
-Point::Point(const Point &copy)
+Point::Point(const Point &copy) : _x(copy._x) , _y(copy._y)
 {
 	*this = copy;
 }
 
-Point &Point::operator=(const Point &copy)
+Point &Point::operator=(const Point &)
 {
-    if (this != &copy)
-    {
-        this->_x = copy._x;
-        this->_y = copy._y;
-    }
     return *this;
 }
 
