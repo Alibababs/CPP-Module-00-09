@@ -2,11 +2,16 @@
 
 int main( void ) 
 {
-	int * a = new int[10];
+	Array<int> test[10];
 
-	a[9] = 2;
-
-	std::cout << a[9] << std::endl;
+	try
+	{
+		test[11];
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	
 	return 0;
 }

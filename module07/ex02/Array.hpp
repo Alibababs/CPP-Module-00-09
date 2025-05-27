@@ -16,8 +16,11 @@ class Array
         Array &operator=(const Array &copy);
         ~Array();
 
+        T &operator[](const unsigned int &index);
         unsigned int size() const;
 
 };
+
+#include "Array.tpp"
 
 #endif
