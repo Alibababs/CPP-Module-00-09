@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 
 template< typename T, typename F >
 void iter(T *array, size_t length, F function)
