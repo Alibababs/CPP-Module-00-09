@@ -15,11 +15,13 @@ SRC_DIR		= 	./
 
 SRC_FILES	=	main				\
 
+TPP_FILES	=	Array.tpp
+
 SRC			= 	$(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC_FILES)))
 
 OBJ			= 	$(SRC:.cpp=.o)
 
-%.o: %.cpp
+%.o: %.cpp $(TPP_FILES)
 	@$(CPP) $(FLAGS) -c $< -o $@
 
 all: $(NAME)

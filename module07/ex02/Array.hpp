@@ -7,7 +7,8 @@ template< typename T >
 class Array
 {
     private:
-        unsigned int _array;
+        unsigned int _size;
+        T *_array;
     public:
         Array();
         Array(unsigned int n);
