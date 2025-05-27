@@ -36,7 +36,7 @@ Character &Character::operator=(const Character &copy)
 				_inventory[i] = NULL;
 			}
 			if (copy._inventory[i])
-            _inventory[i] = copy._inventory[i]->clone();
+            	_inventory[i] = copy._inventory[i]->clone();
 		}
 	}
 	return *this;
