@@ -14,6 +14,7 @@ FLAGS		= 	-Wall -Werror -Wextra -Wconversion -Wno-unused -std=c++98 -g3
 SRC_DIR		= 	./
 
 SRC_FILES	=	main				\
+				Span
 
 SRC			= 	$(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC_FILES)))
 
