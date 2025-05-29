@@ -54,6 +54,7 @@
 		"span": "cpp",
 		"fstream": "cpp",
 		"*.tpp": "cpp",
-		"cstring": "cpp"
+		"cstring": "cpp",
+		"list": "cpp"
 	}
 }

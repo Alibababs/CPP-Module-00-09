@@ -1,17 +1,17 @@
-#include "Array.hpp"
+#include "easyfind.hpp"
 
 int main( void ) 
 {
-	Array<int> test[10];
+	std::vector<int> v;
+	v.push_back (1);
+	v.push_back (20);
+	v.push_back (42);
+	v.push_back (12);
+	v.push_back (42);
 
-	try
-	{
-		test[11];
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << e.what() << '\n';
-	}
-	A REFAIRE
-	return 0;
+	std::vector<int>::const_iterator it = easyfind(v, 0);
+	if (it == v.end())
+		std::cout << "Value not found" << std::endl;
+	else
+		std::cout << "Value found" << std::endl;
 }

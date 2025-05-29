@@ -15,13 +15,11 @@ SRC_DIR		= 	./
 
 SRC_FILES	=	main				\
 
-TPP_FILES	=	easyfind.tpp
-
 SRC			= 	$(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC_FILES)))
 
 OBJ			= 	$(SRC:.cpp=.o)
 
-%.o: %.cpp $(TPP_FILES)
+%.o: %.cpp
 	@$(CPP) $(FLAGS) -c $< -o $@
 
 all: $(NAME)
