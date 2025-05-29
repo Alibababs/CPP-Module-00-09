@@ -2,6 +2,9 @@
 #define ARRAY_HPP
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <exception>
 
 template< typename T >
 class Array
