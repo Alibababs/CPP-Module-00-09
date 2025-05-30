@@ -15,10 +15,9 @@ Bureaucrat::Bureaucrat(std::string const & name, int grade) : _name(name)
     _grade = grade;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy)
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy._name), _grade(copy._grade)
 {
     std::cout << "Bureaucrat copy constructor called" << std::endl;
-    *this = copy;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &copy)
@@ -31,7 +30,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &copy)
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b)
 {
-    os << b.getName() << "'s grade is " << b.getGrade();
+    os << b.getName() << ", bureaucrat grade " << b.getGrade();
 	return os;
 }
 

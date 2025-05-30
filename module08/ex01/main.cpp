@@ -28,7 +28,7 @@ int main( void )
 	{
 		srand(static_cast<unsigned int>(time(NULL)));
 		std::vector<int> v(10000000);
-		for (int i = 0; i < 10000000; i++)
+		for (size_t i = 0; i < 10000000; i++)
 			v[i] = rand() % 42000;
 
 		Span bigSp(10000000);
