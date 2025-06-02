@@ -55,6 +55,7 @@
 		"fstream": "cpp",
 		"*.tpp": "cpp",
 		"cstring": "cpp",
-		"list": "cpp"
+		"list": "cpp",
+		"map": "cpp"
 	}
 }
