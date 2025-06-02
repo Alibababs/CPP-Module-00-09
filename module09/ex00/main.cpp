@@ -8,12 +8,11 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
-	BitcoinExchange test;
+	BitcoinExchange exchange;
 
-	test.init();
+	exchange.initData();
 
-	test.printValue(argv[1]);
-
+	exchange.printValue(argv[1]);
 
 	return 0;
 }

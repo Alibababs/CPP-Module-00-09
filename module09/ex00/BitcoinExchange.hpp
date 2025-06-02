@@ -16,7 +16,7 @@ class BitcoinExchange
         BitcoinExchange &operator=(const BitcoinExchange &);
         ~BitcoinExchange();
 
-        void init();
+        void initData();
         void printValue(std::string filename) const;
 };
 
