@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <stack>
+#include <cstdlib>
+#include <sstream>
 
 class RPN
 {
@@ -13,6 +15,8 @@ class RPN
         RPN(const RPN &);
         RPN &operator=(const RPN &);
         ~RPN();
+
+        void calculate(const std::string &str);
 };
 
 #endif
