@@ -66,10 +66,52 @@ void PmergeMe::parse(int argc, char **argv)
     }
 }
 
+template <typename Container>
+static void fordJohnsonSort(Container &container)
+{
+    if (container.size() <= 1)
+        return;
+
+    Container mainChain;
+    Container pend;
+
+    typename Container::iterator it = container.begin();
+    while (it != container.end())
+    {
+        int first = *it;
+        ++it;
+        if (it == container.end())
+        {
+            pend.push_back(first);
+            break;
+        }
+        int second = *it;
+        ++it;
+
+        if (first > second)
+            std::swap(first, second);
+
+        pend.push_back(first);
+        mainChain.push_back(second);
+    }
+
+    fordJohnsonSort(mainChain);
+
+    for (typename Container::iterator pit = pend.begin(); pit != pend.end(); ++pit)
+    {
+        typename Container::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), *pit);
+        mainChain.insert(pos, *pit);
+    }
+
+    container = mainChain;
+}
+
 void PmergeMe::sortAlgo(int argc, char **argv)
 {
-
+    std::clock_t startP = std::clock();
     parse(argc, argv);
+    std::clock_t endP = std::clock();
+    double durationP = static_cast<double>(endP - startP) / (CLOCKS_PER_SEC * 1000.0);
 
     std::cout << "Before: ";
     for (size_t i = 0; i < _vector.size(); i++)
@@ -79,7 +121,7 @@ void PmergeMe::sortAlgo(int argc, char **argv)
     std::cout << std::endl;
     
     std::clock_t startV = std::clock();
-    sortVector();
+    fordJohnsonSort(_vector);
     std::clock_t endV = std::clock();
 
     std::cout << "After: ";
@@ -90,26 +132,17 @@ void PmergeMe::sortAlgo(int argc, char **argv)
     std::cout << std::endl;
     
     double durationV = static_cast<double>(endV - startV) / (CLOCKS_PER_SEC * 1000.0);
+    durationV += durationP;
     std::cout << "Time to process a range of " << _vector.size() 
               << " elements with std::vector : " 
               << durationV * 1e6 << " µs" << std::endl;
 
     std::clock_t startD = std::clock();
-    sortDeque();
+    fordJohnsonSort(_deque);
     std::clock_t endD = std::clock();
     
     double durationD = static_cast<double>(endD - startD) / (CLOCKS_PER_SEC * 1000.0);
     std::cout << "Time to process a range of " << _deque.size() 
-              << " elements with std::deque : " 
+              << " elements with std::deque  : " 
               << durationD * 1e6 << " µs" << std::endl;
-}
-
-void PmergeMe::sortVector()
-{
-    std::sort(_vector.begin(), _vector.end());
-}
-
-void PmergeMe::sortDeque()
-{
-    std::sort(_deque.begin(), _deque.end());
 }
