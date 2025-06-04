@@ -30,7 +30,7 @@ static bool isOperator(const char &c)
     return (c == '+' || c == '-' || c == '/' || c == '*');
 }
 
-static bool sendError()
+static void sendError()
 {
     std::cerr << "Error" << std::endl;
     exit (1);
