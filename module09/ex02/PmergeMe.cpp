@@ -38,7 +38,6 @@ void PmergeMe::parse(int argc, char **argv)
     {
         std::istringstream iss(argv[i]);
         std::string token;
-
         while (iss >> token)
         {
             for (size_t j = 0; j < token.size(); j++)
@@ -46,22 +45,16 @@ void PmergeMe::parse(int argc, char **argv)
                 if (!std::isdigit(token[j]))
                     sendError();
             }
-
             long num = std::strtol(token.c_str(), NULL, 10);
             if (num < 0 || num > INT_MAX)
                 sendError();
-
            for (size_t k = 0; k < _vector.size(); k++)
             {
                 if (_vector[k] == (int)num)
                     sendError();
             }
-
             _vector.push_back(static_cast<int>(num));
             _deque.push_back(static_cast<int>(num));
-
-            if (i > 3000)
-                sendError();
         }
     }
 }
@@ -112,9 +105,7 @@ void PmergeMe::sortAlgo(int argc, char **argv)
 
     std::cout << "Before: ";
     for (size_t i = 0; i < _vector.size(); i++)
-    {
         std::cout << _vector[i] << " ";
-    }
     std::cout << std::endl;
     
     std::clock_t startV = std::clock();
@@ -127,9 +118,7 @@ void PmergeMe::sortAlgo(int argc, char **argv)
 
     std::cout << "After: ";
     for (size_t i = 0; i < _vector.size(); i++)
-    {
         std::cout << _vector[i] << " ";
-    }
     std::cout << std::endl;
     
     double durationV = static_cast<double>(endV - startV) / (CLOCKS_PER_SEC);
