@@ -27,7 +27,7 @@ void Contact::setInfo()
 	{
 		if (!isdigit(_phone_number[i]))
 		{
-			getCin("Invalid input. Try again: ", _phone_number);
+			getCin("Only numbers are allowed. Try again: ", _phone_number);
 			i = -1;
 		}
 	}

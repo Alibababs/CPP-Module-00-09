@@ -16,7 +16,7 @@ int	main(void)
 			ph.searchContact();
 		else if (command == "EXIT")
 		{
-			std::cout << "Goodbye" << std::endl;
+			std::cout << "Goodbye." << std::endl;
 			break ;
 		}
 		else if (std::cin.eof())
