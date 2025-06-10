@@ -23,7 +23,16 @@ void Contact::setInfo()
 	getCin("Last name: ", _last_name);
 	getCin("Nickname: ", _nickname);
 	getCin("Phone number: ", _phone_number);
+	for (size_t i = 0; i < _phone_number.size(); i++)
+	{
+		if (!isdigit(_phone_number[i]))
+		{
+			getCin("Invalid input. Try again: ", _phone_number);
+			i = -1;
+		}
+	}
 	getCin("Darkest secret: ", _darkest_secret);
+
 }
 
 void Contact::displayShort(int index) const
