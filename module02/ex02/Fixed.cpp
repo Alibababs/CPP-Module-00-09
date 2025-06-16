@@ -26,7 +26,7 @@ Fixed::Fixed(const Fixed &copy)
 Fixed &Fixed::operator=(const Fixed &copy)
 {
 	if (this != &copy)
-		this->_value = copy.getRawBits();
+		this->_value = copy._value;
 	return (*this);
 }
 
