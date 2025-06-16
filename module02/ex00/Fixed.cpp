@@ -20,7 +20,7 @@ Fixed &Fixed::operator=(const Fixed &copy)
 {
    std::cout << "Copy assignment operator called" << std::endl;
    if (this != &copy)
-        this->_value = copy.getRawBits();
+        this->_value = copy._value;
    return *this;
 }
 
