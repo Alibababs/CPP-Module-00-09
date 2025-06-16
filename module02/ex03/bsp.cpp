@@ -7,7 +7,7 @@ float sign(Point const &p1, Point const &p2, Point const &p3)
            (p2.getX().toFloat() - p3.getX().toFloat()) * (p1.getY().toFloat() - p3.getY().toFloat());
 }
 
-bool bsp( Point const a, Point const b, Point const c, Point const point)
+bool bsp( Point const &a, Point const &b, Point const &c, Point const &point)
 {
     float d1 = sign(point, a, b);
     float d2 = sign(point, b, c);
