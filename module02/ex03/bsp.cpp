@@ -13,8 +13,9 @@ bool bsp( Point const a, Point const b, Point const c, Point const point)
     float d2 = sign(point, b, c);
     float d3 = sign(point, c, a);
 
-    bool has_neg = (d1 < 0) || (d2 < 0) || (d3 < 0);
-    bool has_pos = (d1 > 0) || (d2 > 0) || (d3 > 0);
-
-    return !(has_neg && has_pos);
+    if (d1 == 0.0f || d2 == 0.0f || d3 == 0.0f)
+        return false;
+    if ((d1 > 0 && d2 > 0 && d3 > 0) || (d1 < 0 && d2 < 0 && d3 < 0))
+        return true;
+    return false;
 }
