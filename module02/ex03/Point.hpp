@@ -17,7 +17,6 @@ class Point
 
         const Fixed &getX(void) const;
 		const Fixed &getY(void) const;
-
-    };
+};
         
 #endif

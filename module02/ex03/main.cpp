@@ -12,9 +12,9 @@ int main(void)
         Point p(2.5f, 2.0f);
 
         if (bsp(a, b, c, p))
-                std::cout << "Interieur" << std::endl;
+                std::cout << "True" << std::endl;
         else
-                std::cout << "Exterieur" << std::endl;
+                std::cout << "False" << std::endl;
 
     return (0);
 }
