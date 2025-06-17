@@ -13,8 +13,8 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	_name = name;
 	_hit = 100;
-	_energy = 50;
-	_attack_dmg = 20;
+	_energy = 100;
+	_attack_dmg = 30;
 	std::cout << "FragTrap NAME constructor called" << std::endl;
 	std::cout << "FragTrap Name : " << _name << std::endl;
 	std::cout << "FragTrap Hit points : " << _hit << std::endl;
