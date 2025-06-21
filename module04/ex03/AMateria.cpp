@@ -8,7 +8,7 @@ AMateria::AMateria() : _type("notype")
 AMateria::AMateria(const AMateria &copy)
 {
     std::cout << "AMateria copy constructor called" << std::endl;
-    *this = copy;
+    _type = copy._type;
 }
 
 AMateria &AMateria::operator=(const AMateria &copy)

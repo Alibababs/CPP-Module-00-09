@@ -8,8 +8,8 @@ Brain::Brain()
 Brain::Brain(const Brain &copy)
 {
     std::cout << "Copy constructor called" << std::endl;
-    *this = copy;
-}
+    for (int i = 0; i < 100; ++i)
+        _ideas[i] = copy._ideas[i];}
 
 Brain &Brain::operator=(const Brain &copy)
 {
