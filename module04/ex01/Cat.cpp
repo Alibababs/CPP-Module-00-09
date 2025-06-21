@@ -22,9 +22,13 @@ Cat &Cat::operator=(const Cat &copy)
    if (this != &copy)
    {
         this->_type = copy._type;
-            delete _brain;
-       _brain = new Brain(*copy._brain);
-   }
+        if (this->_brain)
+            delete this->_brain;
+        if (copy._brain)
+            this->_brain = new Brain(*copy._brain);
+        else
+            this->_brain = NULL;
+    }
    return *this;
 }
 

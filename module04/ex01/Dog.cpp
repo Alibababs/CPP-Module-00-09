@@ -24,8 +24,11 @@ Dog &Dog::operator=(const Dog &copy)
         this->_type = copy._type;
         if (this->_brain)
             delete this->_brain;
-        this->_brain = new Brain(*copy._brain);
-   }
+       if (copy._brain)
+            this->_brain = new Brain(*copy._brain);
+        else
+            this->_brain = NULL;
+    }
    return *this;
 }
 
