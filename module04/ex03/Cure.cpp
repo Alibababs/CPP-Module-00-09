@@ -2,12 +2,12 @@
 
 Cure::Cure() : AMateria("cure")
 {
-    std::cout << "Cure constructor called" << std::endl;
+    // std::cout << "Cure constructor called" << std::endl;
 }
 
 Cure::Cure(const Cure &copy) : AMateria(copy._type)
 {
-    std::cout << "Cure copy constructor called" << std::endl;
+    // std::cout << "Cure copy constructor called" << std::endl;
 }
 
 Cure &Cure::operator=(const Cure &copy)
@@ -20,7 +20,7 @@ Cure &Cure::operator=(const Cure &copy)
 
 Cure::~Cure()
 {
-    std::cout << "Cure destructor called" << std::endl;
+    // std::cout << "Cure destructor called" << std::endl;
 }
 
 void Cure::use(ICharacter& target)

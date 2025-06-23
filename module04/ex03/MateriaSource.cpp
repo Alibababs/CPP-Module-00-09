@@ -2,7 +2,7 @@
 
 MateriaSource::MateriaSource()
 {
-    std::cout << "MateriaSource constructor called" << std::endl;
+    // std::cout << "MateriaSource constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
 		_inventory[i] = NULL;
@@ -11,7 +11,7 @@ MateriaSource::MateriaSource()
 
 MateriaSource::MateriaSource(const MateriaSource &copy)
 {
-    std::cout << "MateriaSource copy constructor called" << std::endl;
+    // std::cout << "MateriaSource copy constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
 		if (copy._inventory[i])
@@ -42,7 +42,7 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &copy)
 
 MateriaSource::~MateriaSource()
 {
-    std::cout << "MateriaSource destructor called" << std::endl;
+    // std::cout << "MateriaSource destructor called" << std::endl;
     for (int i = 0; i < 4; i++)
 	{
 		if (_inventory[i])
@@ -52,17 +52,17 @@ MateriaSource::~MateriaSource()
 
 void MateriaSource::learnMateria(AMateria* m)
 {
-	std::cout << "learn" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
 		if (_inventory[i] == NULL)
 		{
 			_inventory[i] = m;
-			std::cout << "Materia learned" << std::endl;
+			std::cout << "Materia learned [" << i + 1 << "/4]" << std::endl;
 			return;
 		}
 	}
-	std::cout << "Inventory full, cannot learn more materia" << std::endl;
+	std::cout << "Cannot learn more materia [4/4]" << std::endl;
+	delete m;
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)

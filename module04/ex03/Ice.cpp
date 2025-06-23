@@ -2,12 +2,12 @@
 
 Ice::Ice() : AMateria("ice")
 {
-    std::cout << "Ice constructor called" << std::endl;
+    // std::cout << "Ice constructor called" << std::endl;
 }
 
 Ice::Ice(const Ice &copy) : AMateria(copy._type)
 {
-    std::cout << "Ice copy constructor called" << std::endl;
+    // std::cout << "Ice copy constructor called" << std::endl;
 }
 
 Ice &Ice::operator=(const Ice &copy)
@@ -20,7 +20,7 @@ Ice &Ice::operator=(const Ice &copy)
 
 Ice::~Ice()
 {
-    std::cout << "Ice destructor called" << std::endl;
+    // std::cout << "Ice destructor called" << std::endl;
 }
 
 void Ice::use(ICharacter& target)

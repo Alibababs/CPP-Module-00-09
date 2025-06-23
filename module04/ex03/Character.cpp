@@ -2,7 +2,16 @@
 
 Character::Character() : _name("noname")
 {
-    std::cout << "Character constructor called" << std::endl;
+    // std::cout << "Character constructor called" << std::endl;
+	for (int i = 0; i < 4; i++)
+    {
+        _inventory[i] = NULL;
+    }
+}
+
+Character::Character(std::string const &name) : _name(name)
+{
+    // std::cout << "Character name constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
     {
         _inventory[i] = NULL;
@@ -44,17 +53,12 @@ Character &Character::operator=(const Character &copy)
 
 Character::~Character()
 {
-    std::cout << "Character destructor called" << std::endl;
+    // std::cout << "Character destructor called" << std::endl;
     for (int i = 0; i < 4; i++)
 	{
 		if (_inventory[i])
 			delete _inventory[i];
 	}
-}
-
-Character::Character(std::string const & name) : _name(name)
-{
-	std::cout << "Character name constructor called" << std::endl;
 }
 
 const std::string &Character::getName() const
@@ -64,30 +68,43 @@ const std::string &Character::getName() const
 
 void Character::equip(AMateria* m)
 {
-	if (m == NULL)
+	if (!m)
 	{
-		std::cout << "EQUIP" << std::endl;
+		std::cout << "MATERIA DOESNT EXIST" << std::endl;
 		return;
 	}
 	for (int i = 0; i < 4; i++)
 	{
+		if (_inventory[i] == m)
+		{
+			std::cout << "Materia already equip" << std::endl;
+			return ;
+		}
 		if (_inventory[i] == NULL)
 		{
 			_inventory[i] = m;
-			std::cout << "EQUIP" << std::endl;
+			std::cout << "EQUIP in slot: [" << i + 1 << "/4]" << std::endl;
 			return;
 		}
 	}
-	std::cout << "EQUIP" << std::endl;
+	std::cout << "Inventory full : Materia destroy" << std::endl;
+	delete m;
 }
 
 void Character::unequip(int idx)
 {
 	if (idx >= 0 && idx < 4)
 	{
-		std::cout << "UNEQUIP" << std::endl;
-		_inventory[idx] = NULL;
-		return;
+		if (_inventory[idx])
+		{
+
+			std::cout << "UNEQUIP" << std::endl;
+			delete _inventory[idx];
+			_inventory[idx] = NULL;
+			return;
+		}
+		else
+			std::cout << "Nothing to unequip" << std::endl; 
 	}
 	else
 		std::cout << "Index out of range" << std::endl;
