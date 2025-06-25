@@ -9,19 +9,24 @@ NAME		= 	a.out
 
 CPP			= 	c++
 
-FLAGS		= 	-Wall -Werror -Wextra -std=c++98 -g3
-
-SRC_DIR		= 	./
+FLAGS		= 	-Wall -Werror -Wextra -std=c++98 -g3 -MMD
 
 SRC_FILES	=	main			\
 				Bureaucrat		\
 				Form			\
 
+SRC_DIR		= 	./
+
+OBJ_DIR		= 	./obj/
+
 SRC			= 	$(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC_FILES)))
 
-OBJ			= 	$(SRC:.cpp=.o)
+OBJ			= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-%.o: %.cpp
+DEP			= 	$(OBJ:.o=.d)
+
+$(OBJ_DIR)%.o: $(SRC_DIR)%.cpp
+	@mkdir -p $(OBJ_DIR)
 	@$(CPP) $(FLAGS) -c $< -o $@
 
 all: $(NAME)
@@ -33,7 +38,7 @@ $(NAME): $(OBJ)
 
 clean:
 	@echo "$(RED)Deleting object files...$(RESET)"
-	@rm -f $(OBJ)
+	@rm -rf $(OBJ_DIR)
 	@echo "$(GREEN)Done$(RESET)"
 
 fclean: clean
@@ -44,3 +49,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+-include $(DEP)
