@@ -9,7 +9,7 @@ int main( void )
 	v.push_back (12);
 	v.push_back (42);
 
-	std::vector<int>::const_iterator it = easyfind(v, 0);
+	std::vector<int>::const_iterator it = easyfind(v, 1);
 	if (it == v.end())
 		std::cout << "Value not found" << std::endl;
 	else
