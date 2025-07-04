@@ -30,7 +30,7 @@ AForm* Intern::makeForm(std::string name, std::string target)
 {
     std::string names[3] = {"shrubbery creation", "presidential pardon", "robotomy request"};
 
-    int i = 0;
+    int i = -1;
     while (i < 3 && names[i] != name)
         i++;
     switch (i)
