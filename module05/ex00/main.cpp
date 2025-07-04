@@ -2,8 +2,8 @@
 
 int main( void )
 {
-    /// TOO HIGH
-    std::cout << "----- TOO HIGH TEST -----" << std::endl;
+    /// TOO LOW
+    std::cout << "----- TOO LOW TEST -----" << std::endl;
     try
     {
         Bureaucrat michel("Michel", 151);
@@ -12,8 +12,8 @@ int main( void )
     {
         std::cout << e.what() << std::endl;
     }
-    /// TOO LOW
-    std::cout << "----- TOO LOW TEST -----" << std::endl;
+    /// TOO HIGH
+    std::cout << "----- TOO HIGH TEST -----" << std::endl;
     try
     {
         Bureaucrat michel("Michel", -42);
