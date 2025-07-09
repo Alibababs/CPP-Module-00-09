@@ -39,7 +39,7 @@ static bool isFloat(const std::string &str)
 		return true;
 	char *end;
 	std::strtof(str.c_str(), &end);
-	return *end == 'f' && *(end + 1) == '\0';
+	return *end == 'f' && *(end + 1) == '\0' && *(end - 1) != '.';
 }
 
 static bool isDouble(const std::string &str) 
@@ -48,7 +48,7 @@ static bool isDouble(const std::string &str)
 		return true;
 	char *end;
 	std::strtod(str.c_str(), &end);
-	return *end == '\0';
+	return *end == '\0' && *(end - 1) != '.';
 }
 
 static void printChar(const double &value)
