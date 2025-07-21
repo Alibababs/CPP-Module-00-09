@@ -13,7 +13,7 @@ int main()
         std::cout << "Array size: " << const_arr.size() << std::endl;
 
         std::cout << "Exception test: ";
-        const_arr[10];  // throw an exception
+        std::cout << const_arr[10] << std::endl; // throw an exception
     } 
     catch (const std::exception& e) 
     {
@@ -25,7 +25,7 @@ int main()
         // Test affectation
         Array<int> arr(5);
         Array<int> arr_test;
-        
+
         arr[0] = 42;
         arr_test = arr;
         std::cout << "Affectation test: " << arr_test[0] << std::endl;
