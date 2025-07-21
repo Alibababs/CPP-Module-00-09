@@ -7,8 +7,8 @@ int main()
         // Test access const
         const Array<int> const_arr(5);
         std::cout << "Access const test: " << const_arr[3] << std::endl;
-        // throw an exception
-        const_arr[10];
+
+        const_arr[10];  // throw an exception
     } 
     catch (const std::exception& e) 
     {
