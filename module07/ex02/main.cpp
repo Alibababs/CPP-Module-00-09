@@ -6,7 +6,7 @@ int main()
     {
         // Test access const
         const Array<int> const_arr(5);
-        std::cout << const_arr[3] << std::endl;
+        std::cout << "Access const test: " << const_arr[3] << std::endl;
         // throw an exception
         const_arr[10];
     } 
@@ -17,6 +17,10 @@ int main()
 
     // Test affectation
     Array<int> arr(5);
-    arr = arr;
+    arr[0] = 42;
+    Array<int> arr_test(3);
+    arr_test = arr;
+    std::cout << "Affectation test: " << arr_test[0] << std::endl;
+
     return 0;
 }
