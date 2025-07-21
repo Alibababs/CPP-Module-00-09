@@ -10,7 +10,7 @@ int main()
         // Test access const
         const Array<int> const_arr(5);
         std::cout << "Access const test: " << const_arr[3] << std::endl;
-        std::cout << "Array size is: " << const_arr.size() << std::endl;
+        std::cout << "Array size: " << const_arr.size() << std::endl;
 
         std::cout << "Exception test: ";
         const_arr[10];  // throw an exception
@@ -24,10 +24,12 @@ int main()
     {
         // Test affectation
         Array<int> arr(5);
+        Array<int> arr_test;
+        
         arr[0] = 42;
-        Array<int> arr_test(3);
         arr_test = arr;
         std::cout << "Affectation test: " << arr_test[0] << std::endl;
+        std::cout << "Array size: " << arr_test.size() << std::endl;
     }
     catch (const std::exception& e) 
     {
