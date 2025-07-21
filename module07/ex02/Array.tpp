@@ -24,11 +24,13 @@ Array<T> &Array<T>::operator=(const Array &copy)
    std::cout << "Array copy assignment operator called" << std::endl;
    if (this != &copy)
    {
-       _size = copy._size;
-       delete [] _array;
-       _array = new T[_size];
-       for (unsigned int i = 0; i < _size; i++)
-        _array[i] = copy._array[i];
+        T *new_array = new T[copy._size];
+        for (unsigned int i = 0; i < copy._size; i++)
+            new_array[i] = copy._array[i];
+    
+        delete [] _array;
+        _array = new_array;
+        _size = copy._size;
    }
    return *this;
 }
@@ -42,6 +44,16 @@ Array<T>::~Array()
 
 template <typename T>
 T &Array<T>::operator[](const unsigned int &index)
+{
+    if (index >= _size)
+    {
+        throw std::out_of_range("Index is out of bounds");
+    }
+    return _array[index];
+}
+
+template <typename T>
+const T &Array<T>::operator[](const unsigned int &index) const
 {
     if (index >= _size)
     {
