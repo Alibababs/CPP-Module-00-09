@@ -33,7 +33,7 @@ int main( void )
     
     try 
     {
-        badForm = someRandomIntern.makeForm("NOT WORKING", "Debilus");
+        badForm = someRandomIntern.makeForm("presidential pardon", "Debilus");
         delete badForm;
     }
     catch (std::exception &e)

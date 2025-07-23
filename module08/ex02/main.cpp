@@ -35,25 +35,25 @@ int main()
 
 	std::cout << "----- MAIN WITH LIST -----" << std::endl;
 
-	std::list<int> lstack;
+	std::list<int> list;
 
-	lstack.push_back(5);
-	lstack.push_back(17);
+	list.push_back(5);
+	list.push_back(17);
 
-	std::cout << lstack.back() << std::endl;
+	std::cout << list.back() << std::endl;
 
-	lstack.pop_back();
+	list.pop_back();
 
-	std::cout << lstack.size() << std::endl;
+	std::cout << list.size() << std::endl;
 
-	lstack.push_back(3);
-	lstack.push_back(5);
-	lstack.push_back(737);
+	list.push_back(3);
+	list.push_back(5);
+	list.push_back(737);
 	//[...]
-	lstack.push_back(0);
+	list.push_back(0);
 
-	std::list<int>::iterator it2 = lstack.begin();
-	std::list<int>::iterator ite2 = lstack.end();
+	std::list<int>::iterator it2 = list.begin();
+	std::list<int>::iterator ite2 = list.end();
 
 	++it2;
 	--it2;
@@ -62,6 +62,6 @@ int main()
 		std::cout << *it2 << std::endl;
 		++it2;
 	}
-	std::list<int> l(lstack);
+	std::list<int> l(list);
 	return 0;
 }
