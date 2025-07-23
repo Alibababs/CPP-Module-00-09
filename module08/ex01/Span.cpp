@@ -69,7 +69,7 @@ int Span::longestSpan() const
 
 void Span::addRange(std::vector<int>::const_iterator begin, std::vector<int>::const_iterator end)
 {
-	if (_v.size() + static_cast<std::size_t>(std::distance(begin, end) > _N))
+	if (_v.size() + static_cast<std::size_t>(std::distance(begin, end)) > _N)
 		throw std::length_error("Too much range");
 	_v.insert(_v.end(), begin, end);
 }
