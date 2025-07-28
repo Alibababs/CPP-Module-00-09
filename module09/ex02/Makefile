@@ -5,7 +5,7 @@ YELLOW	= \033[1;33m
 CYAN	= \033[0;36m
 RESET	= \033[0m
 
-NAME		= 	RPN
+NAME		= 	PmergeMe
 
 CPP			= 	c++
 
@@ -14,7 +14,7 @@ FLAGS		= 	-Wall -Werror -Wextra -Wconversion -std=c++98 -g3
 SRC_DIR		= 	./
 
 SRC_FILES	=	main				\
-				RPN					\
+				PmergeMe			\
 
 SRC			= 	$(addprefix $(SRC_DIR), $(addsuffix .cpp, $(SRC_FILES)))
 
