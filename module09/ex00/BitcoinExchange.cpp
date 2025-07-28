@@ -66,7 +66,7 @@ static bool isValidDate(const std::string &date, const std::string &line)
         }
     }
 
-    int y = atoi(date.substr(0, 4).c_str());
+    // int y = atoi(date.substr(0, 4).c_str());
     int m = atoi(date.substr(5, 2).c_str());
     int d = atoi(date.substr(8, 2).c_str());
     if (m < 1 || m > 12 || d < 1 || d > 31)
