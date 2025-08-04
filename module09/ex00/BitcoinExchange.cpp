@@ -15,7 +15,7 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &copy)
    std::cout << "BitcoinExchange copy assignment operator called" << std::endl;
    if (this != &copy)
    {
-    _data = copy._data;
+        _data = copy._data;
    }
    return *this;
 }
@@ -42,7 +42,7 @@ void BitcoinExchange::initData()
     {
 		date = line.substr(0, line.find(","));
         value = static_cast<float>(std::atof(line.substr(line.find(",") + 1).c_str()));
-        _data.insert(std::pair<std::string, float>(date, value));
+        _data.insert(std::make_pair(date, value));
     }
     file.close();
 }
