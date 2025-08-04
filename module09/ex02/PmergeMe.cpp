@@ -59,17 +59,16 @@ void PmergeMe::parse(int argc, char **argv)
     }
 }
 
-typedef std::pair<int, int> Pair;
 
 template <typename Container>
 static void fordJohnsonSort(Container &container) 
 {
-    // Cas de base : 0 ou 1 élément, déjà trié
+    typedef std::pair<int, int> Pair;
+
     if (container.size() <= 1) {
         return;
     }
 
-    // Gestion de l'élément "straggler" si taille impaire
     bool odd = (container.size() % 2 != 0);
     int straggler;
     if (odd) 
@@ -78,7 +77,6 @@ static void fordJohnsonSort(Container &container)
         container.pop_back();
     }
 
-    // Formation des paires (max, min)
     std::vector<Pair> pairs;
     for (size_t i = 0; i < container.size(); i += 2) 
     {
@@ -90,12 +88,11 @@ static void fordJohnsonSort(Container &container)
             pairs.push_back(std::make_pair(a, b));
     }
 
-    // Extraction des premiers éléments (max des paires) dans un container
+    // first element (max) pairs in container
     Container firsts;
     for (size_t i = 0; i < pairs.size(); ++i)
         firsts.push_back(pairs[i].first);
 
-    // Tri récursif sur les premiers éléments
     fordJohnsonSort(firsts);
 
     // Reconstruction de pend : les seconds éléments des paires dans l'ordre des firsts triés
@@ -190,9 +187,9 @@ void PmergeMe::sortAlgo(int argc, char **argv)
     fordJohnsonSort(_vector);
     std::clock_t endV = std::clock();
 
-    // std::clock_t startD = std::clock();
-    // fordJohnsonSort(_deque);
-    // std::clock_t endD = std::clock();
+    std::clock_t startD = std::clock();
+    fordJohnsonSort(_deque);
+    std::clock_t endD = std::clock();
 
     std::cout << "After: ";
     for (size_t i = 0; i < _vector.size(); i++)
@@ -204,8 +201,8 @@ void PmergeMe::sortAlgo(int argc, char **argv)
               << " elements with std::vector : " 
               << durationV * 1e3 << " ms" << std::endl;
     
-    // double durationD = static_cast<double>(endD - startD) / (CLOCKS_PER_SEC);
-    // std::cout << "Time to process a range of " << _deque.size() 
-    //           << " elements with std::deque  : " 
-    //           << durationD * 1e3 << " ms" << std::endl;
+    double durationD = static_cast<double>(endD - startD) / (CLOCKS_PER_SEC);
+    std::cout << "Time to process a range of " << _deque.size() 
+              << " elements with std::deque  : " 
+              << durationD * 1e3 << " ms" << std::endl;
 }
