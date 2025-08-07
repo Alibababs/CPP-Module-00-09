@@ -17,9 +17,7 @@ class PmergeMe
 {
     private:
         std::vector<int> _vector;
-        std::deque<int> _deque;
-        
-        int parse(int argc, char **argv);
+        std::deque<int> _deque;        
     public:
         PmergeMe();
         PmergeMe(const PmergeMe &);

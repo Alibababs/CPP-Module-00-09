@@ -26,8 +26,10 @@ PmergeMe::~PmergeMe()
     // std::cout << "PmergeMe destructor called" << std::endl;
 }
 
-int PmergeMe::parse(int argc, char **argv)
+static int isvalidArgument(int argc, char **argv)
 {
+    std::vector<int> temp_vector;
+
     for (int i = 1; i < argc; i++)
     {
         std::istringstream iss(argv[i]);
@@ -35,20 +37,15 @@ int PmergeMe::parse(int argc, char **argv)
         while (iss >> token)
         {
             for (size_t j = 0; j < token.size(); j++)
-            {
                 if (!std::isdigit(token[j]))
                     return (1);
-            }
             long num = std::strtol(token.c_str(), NULL, 10);
             if (num < 0 || num > INT_MAX)
                 return (1);
-            for (size_t k = 0; k < _vector.size(); k++)
-            {
-                if (_vector[k] == (int)num)
+            for (size_t k = 0; k < temp_vector.size(); k++)
+                if (temp_vector[k] == (int)num)
                     return (1);
-            }
-            _vector.push_back(static_cast<int>(num));
-            _deque.push_back(static_cast<int>(num));
+            temp_vector.push_back(static_cast<int>(num));
         }
     }
     return 0;
@@ -86,14 +83,14 @@ static void fordJohnsonSort(Container &container)
 
     // Premier element (max) dans firsts, second dans pend
     Container firsts;
-    for (size_t i = 0; i < pairs.size(); ++i)
+    for (size_t i = 0; i < pairs.size(); i++)
         firsts.push_back(pairs[i].first);
 
     fordJohnsonSort(firsts);
 
     // Reconstruction de pend : les seconds elements des paires dans l'ordre des firsts tries
     Container pend;
-    for (typename Container::iterator it = firsts.begin(); it != firsts.end(); ++it) 
+    for (typename Container::iterator it = firsts.begin(); it != firsts.end(); it++) 
     {
         int first_val = *it;
         for (typename std::vector<Pair>::iterator pit = pairs.begin(); pit != pairs.end(); ++pit) 
@@ -111,7 +108,7 @@ static void fordJohnsonSort(Container &container)
     Container main_chain;
     if (!pend.empty())
         main_chain.push_back(pend[0]);
-    for (typename Container::iterator it = firsts.begin(); it != firsts.end(); ++it)
+    for (typename Container::iterator it = firsts.begin(); it != firsts.end(); it++)
         main_chain.push_back(*it);
 
     // Calcul de la sequence Jacobsthal
@@ -132,7 +129,7 @@ static void fordJohnsonSort(Container &container)
 
         // Construction de la sequence d'insertion
         std::vector<size_t> sequence;
-        for (size_t i = 1; i < jacob.size(); ++i) 
+        for (size_t i = 1; i < jacob.size(); i++) 
         {
             size_t start = jacob[i];
             size_t prev = jacob[i - 1];
@@ -146,11 +143,11 @@ static void fordJohnsonSort(Container &container)
 
         // Ajouter le reste non couverts par Jacobsthal en fin
         size_t last_jacob = jacob[jacob.size() - 1];
-        for (size_t j = pend_size - 1; j > last_jacob; --j)
+        for (size_t j = pend_size - 1; j > last_jacob; j--)
             sequence.push_back(j);
 
         // Insertion dans main_chain selon la sequence calculee
-        for (size_t i = 0; i < sequence.size(); ++i) 
+        for (size_t i = 0; i < sequence.size(); i++) 
         {
             typename Container::iterator pos = std::lower_bound(main_chain.begin(), main_chain.end(), pend[sequence[i]]);
             main_chain.insert(pos, pend[sequence[i]]);
@@ -169,19 +166,23 @@ static void fordJohnsonSort(Container &container)
 
 int PmergeMe::sortAlgo(int argc, char **argv)
 {
-    if (parse(argc, argv) == 1)
+    if (isvalidArgument(argc, argv) == 1)
         return (1);
 
     std::cout << "Before: ";
-    for (size_t i = 0; i < _vector.size(); i++)
-        std::cout << _vector[i] << " ";
+    for (int i = 1; i < argc; i++)
+        std::cout << argv[i] << " ";
     std::cout << std::endl;
     
     std::clock_t startV = std::clock();
+    for (int i = 1; i < argc; i++)
+        _vector.push_back(std::atoi(argv[i]));
     fordJohnsonSort(_vector);
     std::clock_t endV = std::clock();
 
     std::clock_t startD = std::clock();
+    for (int i = 1; i < argc; i++)
+        _deque.push_back(std::atoi(argv[i]));
     fordJohnsonSort(_deque);
     std::clock_t endD = std::clock();
 
