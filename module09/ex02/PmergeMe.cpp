@@ -158,15 +158,33 @@ static void fordJohnsonSort(Container &container)
     container = main_chain;
 }
 
-int PmergeMe::sortAlgo(int argc, char **argv)
+void PmergeMe::printTime(int argc, char **argv, double durationV, double durationD)
 {
-    if (isvalidArgument(argc, argv) == 1)
-        return (1);
-
     std::cout << "Before: ";
     for (int i = 1; i < argc; i++)
         std::cout << argv[i] << " ";
     std::cout << std::endl;
+
+    std::cout << "After: ";
+    for (size_t i = 0; i < _vector.size(); i++)
+        std::cout << _vector[i] << " ";
+    std::cout << std::endl;
+    
+    std::cout << "Time to process a range of " << _vector.size() 
+              << " elements with std::vector : " 
+              << (durationV / (CLOCKS_PER_SEC)) * 1e3 << " ms" 
+              << std::endl;
+    
+    std::cout << "Time to process a range of " << _deque.size() 
+              << " elements with std::deque  : " 
+              << (durationD / (CLOCKS_PER_SEC)) * 1e3 << " ms" 
+              << std::endl;
+}
+
+int PmergeMe::sortAlgo(int argc, char **argv)
+{
+    if (isvalidArgument(argc, argv) == 1)
+        return (1);
     
     std::clock_t startV = std::clock();
     for (int i = 1; i < argc; i++)
@@ -180,19 +198,9 @@ int PmergeMe::sortAlgo(int argc, char **argv)
     fordJohnsonSort(_deque);
     std::clock_t endD = std::clock();
 
-    std::cout << "After: ";
-    for (size_t i = 0; i < _vector.size(); i++)
-        std::cout << _vector[i] << " ";
-    std::cout << std::endl;
-    
-    double durationV = static_cast<double>(endV - startV) / (CLOCKS_PER_SEC);
-    std::cout << "Time to process a range of " << _vector.size() 
-              << " elements with std::vector : " 
-              << durationV * 1e3 << " ms" << std::endl;
-    
-    double durationD = static_cast<double>(endD - startD) / (CLOCKS_PER_SEC);
-    std::cout << "Time to process a range of " << _deque.size() 
-              << " elements with std::deque  : " 
-              << durationD * 1e3 << " ms" << std::endl;
+    double durationV = static_cast<double>(endV - startV);
+    double durationD = static_cast<double>(endD - startD);
+    printTime(argc, argv, durationV, durationD);
+
     return 0;
 }

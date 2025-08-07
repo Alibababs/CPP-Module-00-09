@@ -4,13 +4,8 @@
 #include <iostream>
 #include <deque>
 #include <vector>
-#include <cctype>
-#include <cstdlib>
-#include <sstream>
 #include <climits>
-#include <set>
 #include <ctime>
-
 #include <algorithm>
 
 class PmergeMe
@@ -24,6 +19,7 @@ class PmergeMe
         PmergeMe &operator=(const PmergeMe &);
         ~PmergeMe();
 
+        void printTime(int argc, char **argv, double durationV, double durationD);
         int sortAlgo(int argc, char **argv);
 };
 
