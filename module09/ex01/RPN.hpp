@@ -16,7 +16,7 @@ class RPN
         RPN &operator=(const RPN &);
         ~RPN();
 
-        void calculate(const std::string &str);
+        int calculate(const std::string &str);
 };
 
 #endif

@@ -10,7 +10,11 @@ int main(int argc, char **argv)
 
 	RPN rpn;
 
-	rpn.calculate(argv[1]);
+	if (rpn.calculate(argv[1]) == 1)
+	{
+		std::cout << "Error" << std::endl;
+		return (1);
+	}
 
 	return 0;
 }

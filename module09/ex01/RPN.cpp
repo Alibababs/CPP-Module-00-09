@@ -30,32 +30,28 @@ static bool isOperator(const char &c)
     return (c == '+' || c == '-' || c == '/' || c == '*');
 }
 
-static void sendError()
-{
-    std::cerr << "Error" << std::endl;
-    exit (1);
-}
-
-static void checkSyntaxError(const std::string &str)
+static int checkSyntaxError(const std::string &str)
 {
     for (size_t i = 0; i < str.length(); i++)
     {
         if (!std::isdigit(str[i]) && !std::isspace(str[i]) && !isOperator(str[i]))
-            sendError();
+            return (1);
         if (std::isdigit(str[i]) && ((i != 0 && !std::isspace(str[i - 1])) || !std::isspace(str[i + 1])))
-            sendError();
+            return (1);
         if (std::isspace(str[i]) && (std::isspace(str[i - 1]) || std::isspace(str[ i + 1])))
-            sendError();
+            return (1);
         if (isOperator(str[i]) && ((i != str.length() - 1 && !std::isspace(str[i + 1])) || !std::isspace(str[i - 1])))
-            sendError();
+            return (1);
         if (std::isspace(str[str.length() - 1]) || std::isspace(str[0]))
-            sendError();
+            return (1);
     }
+    return (0);
 }
 
-void RPN::calculate(const std::string &str)
+int RPN::calculate(const std::string &str)
 {
-    checkSyntaxError(str);
+    if (checkSyntaxError(str) == 1)
+        return (1);
 
     std::istringstream iss(str);
     char token;
@@ -68,7 +64,7 @@ void RPN::calculate(const std::string &str)
         if (isOperator(token))
         {
             if (_stack.size() < 2)
-                sendError();
+                return (1);
     
             b = _stack.top(); 
             _stack.pop();
@@ -84,7 +80,7 @@ void RPN::calculate(const std::string &str)
             else
             {
                 if (b == 0)
-                    sendError();
+                    return (1);
                 result = a / b;
             }
             _stack.push(result);
@@ -93,6 +89,8 @@ void RPN::calculate(const std::string &str)
             _stack.push(token - '0');
     }
     if (_stack.size() != 1)
-        sendError();
+        return (1);
     std::cout << _stack.top() << std::endl;
+
+    return (0);
 }
