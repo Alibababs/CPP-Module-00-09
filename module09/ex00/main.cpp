@@ -10,9 +10,11 @@ int main(int argc, char **argv)
 
 	BitcoinExchange exchange;
 
-	exchange.initData();
+	if (exchange.initData() == 1)
+		return 1;
 
-	exchange.printValue(argv[1]);
+	if (exchange.printValue(argv[1]) == 1)
+		return 1;
 
 	return 0;
 }

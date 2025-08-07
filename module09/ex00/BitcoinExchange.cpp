@@ -25,7 +25,7 @@ BitcoinExchange::~BitcoinExchange()
     // std::cout << "BitcoinExchange destructor called" << std::endl;
 }
 
-void BitcoinExchange::initData()
+int BitcoinExchange::initData()
 {
     std::ifstream file("data.csv");
     std::string line, date;
@@ -34,7 +34,7 @@ void BitcoinExchange::initData()
     if (!file.is_open())
     {
         std::cout << "Error: Cannot open file" << std::endl;
-        exit (1);
+        return (1);
     }
 
     std::getline(file, line);
@@ -45,6 +45,8 @@ void BitcoinExchange::initData()
         _data.insert(std::make_pair(date, value));
     }
     file.close();
+
+    return (0);
 }
 
 static bool isValidDate(const std::string &date, const std::string &line)
@@ -114,13 +116,13 @@ static bool isValidValue(const float &value, const std::string &line)
     return true;
 }
 
-void BitcoinExchange::printValue(std::string filename) const
+int BitcoinExchange::printValue(std::string filename) const
 {
     std::ifstream file(filename.c_str());
     if (!file.is_open())
     {
         std::cout << "Error: Cannot open file" << std::endl;
-        exit (1);
+        return (1);
     }
 
     std::string line;
@@ -128,7 +130,7 @@ void BitcoinExchange::printValue(std::string filename) const
     if (line != "date | value")
     {
         std::cout << "Error: file must start with: date | value" << std::endl;
-        exit (1);
+        return (1);
     }
 
     std::string date;
@@ -163,4 +165,6 @@ void BitcoinExchange::printValue(std::string filename) const
         std::cout << date << " => " << value << " = " << value * it->second << std::endl;
     }
     file.close();
+
+    return (0);
 }
