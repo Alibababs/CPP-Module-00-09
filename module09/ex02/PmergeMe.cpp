@@ -28,29 +28,23 @@ PmergeMe::~PmergeMe()
 
 static int isvalidArgument(int argc, char **argv)
 {
-    std::vector<int> temp_vector;
+    std::vector<long> temp_vector;
 
     for (int i = 1; i < argc; i++)
     {
-        std::istringstream iss(argv[i]);
-        std::string token;
-        while (iss >> token)
-        {
-            for (size_t j = 0; j < token.size(); j++)
-                if (!std::isdigit(token[j]))
-                    return (1);
-            long num = std::strtol(token.c_str(), NULL, 10);
-            if (num < 0 || num > INT_MAX)
+        for (size_t j = 0; argv[i][j]; j++)
+            if (!std::isdigit(argv[i][j]))
                 return (1);
-            for (size_t k = 0; k < temp_vector.size(); k++)
-                if (temp_vector[k] == (int)num)
-                    return (1);
-            temp_vector.push_back(static_cast<int>(num));
-        }
+        long num = std::strtol(argv[i], NULL, 10);
+            if (num > INT_MAX)
+                return (1);
+        for (size_t k = 0; k < temp_vector.size(); k++)
+            if (temp_vector[k] == num)
+                return (1);
+        temp_vector.push_back(num);
     }
     return 0;
 }
-
 
 template <typename Container>
 static void fordJohnsonSort(Container &container) 
@@ -193,12 +187,12 @@ int PmergeMe::sortAlgo(int argc, char **argv)
     
     double durationV = static_cast<double>(endV - startV) / (CLOCKS_PER_SEC);
     std::cout << "Time to process a range of " << _vector.size() 
-              << " pend[sequence[i]]s with std::vector : " 
+              << " elements with std::vector : " 
               << durationV * 1e3 << " ms" << std::endl;
     
     double durationD = static_cast<double>(endD - startD) / (CLOCKS_PER_SEC);
     std::cout << "Time to process a range of " << _deque.size() 
-              << " pend[sequence[i]]s with std::deque  : " 
+              << " elements with std::deque  : " 
               << durationD * 1e3 << " ms" << std::endl;
     return 0;
 }
