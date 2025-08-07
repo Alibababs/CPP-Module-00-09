@@ -26,13 +26,7 @@ PmergeMe::~PmergeMe()
     // std::cout << "PmergeMe destructor called" << std::endl;
 }
 
-static void sendError()
-{
-    std::cerr << "Error" << std::endl;
-    exit (1);
-}
-
-void PmergeMe::parse(int argc, char **argv)
+int PmergeMe::parse(int argc, char **argv)
 {
     for (int i = 1; i < argc; i++)
     {
@@ -43,20 +37,21 @@ void PmergeMe::parse(int argc, char **argv)
             for (size_t j = 0; j < token.size(); j++)
             {
                 if (!std::isdigit(token[j]))
-                    sendError();
+                    return (1);
             }
             long num = std::strtol(token.c_str(), NULL, 10);
             if (num < 0 || num > INT_MAX)
-                sendError();
-           for (size_t k = 0; k < _vector.size(); k++)
+                return (1);
+            for (size_t k = 0; k < _vector.size(); k++)
             {
                 if (_vector[k] == (int)num)
-                    sendError();
+                    return (1);
             }
             _vector.push_back(static_cast<int>(num));
             _deque.push_back(static_cast<int>(num));
         }
     }
+    return 0;
 }
 
 
@@ -172,9 +167,10 @@ static void fordJohnsonSort(Container &container)
     container = main_chain;
 }
 
-void PmergeMe::sortAlgo(int argc, char **argv)
+int PmergeMe::sortAlgo(int argc, char **argv)
 {
-    parse(argc, argv);
+    if (parse(argc, argv) == 1)
+        return (1);
 
     std::cout << "Before: ";
     for (size_t i = 0; i < _vector.size(); i++)
@@ -203,4 +199,5 @@ void PmergeMe::sortAlgo(int argc, char **argv)
     std::cout << "Time to process a range of " << _deque.size() 
               << " pend[sequence[i]]s with std::deque  : " 
               << durationD * 1e3 << " ms" << std::endl;
+    return 0;
 }

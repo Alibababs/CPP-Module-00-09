@@ -19,16 +19,14 @@ class PmergeMe
         std::vector<int> _vector;
         std::deque<int> _deque;
         
-        void parse(int argc, char **argv);
-        void sortVector();
-        void sortDeque();
+        int parse(int argc, char **argv);
     public:
         PmergeMe();
         PmergeMe(const PmergeMe &);
         PmergeMe &operator=(const PmergeMe &);
         ~PmergeMe();
 
-        void sortAlgo(int argc, char **argv);
+        int sortAlgo(int argc, char **argv);
 };
 
 #endif
