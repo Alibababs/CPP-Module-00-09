@@ -15,8 +15,8 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &copy)
    std::cout << "PmergeMe copy assignment operator called" << std::endl;
    if (this != &copy)
    {
-    _vector = copy._vector;
-    _deque = copy._deque;
+        _vector = copy._vector;
+        _deque = copy._deque;
    }
    return *this;
 }
